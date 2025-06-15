@@ -9,6 +9,13 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Mts | Web Developer",
   description: "A portfolio site created with Next.js",
+
+  // ▼▼▼ OGP設定を追加 ▼▼▼
+  openGraph: {
+    title: "Ysk | Web Developer",
+    description: "はじめてのポートフォリオサイトです。",
+    images: ["/images/work01.png"], // publicフォルダに配置した画像のパス
+  },
 };
 
 export default function RootLayout({
