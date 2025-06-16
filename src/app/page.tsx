@@ -16,9 +16,9 @@ const works =[
 export default function Home() {
   return (
     <>
-       {/* ▼▼▼ ここが静的なグラデーション背景 ▼▼▼ */}
+       {/* ▼▼▼ ここがアニメーションするグラデーション背景 ▼▼▼ */}
       <div 
-        className="fixed inset-0 -z-10 bg-gradient-to-b from-[#e66465] to-[#9198e5]" 
+        className="fixed inset-0 -z-10 animated-gradient" 
       />
 
       {/*ヒーローセクション*/}
