@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="ja" className="scroll-smooth">
       {/* bodyタグにTailwind CSSのクラスを適用 */}
-      <body className={`${inter.className} bg-slate-900 text-slate-50 pt-16`}>
+      <body className={`${inter.className} bg-slate-900 text-slate-50 pt-16 lg:pt-0 lg:pl-24`}>
         {/* ★ここにヘッダーを追加予定 */}
         <Header />
         <main>
