@@ -28,15 +28,15 @@ export default function WorkCard({ title, description, imageUrl, appUrl, githubU
         {/* ▼▼▼ ボタンのデザインを変更 ▼▼▼ */}
         <div className="mt-4 flex gap-4">
           <Link 
-            href={appUrl} 
-            target="_blank" 
+            href={appUrl || "/"} 
+            target={appUrl ? "_blank" : "_self"}
             className="flex-1 rounded-lg bg-pink-500/80 px-4 py-2 text-center font-bold text-white transition-all hover:bg-pink-500"
           >
             Demo
           </Link>
           <Link 
-            href={githubUrl} 
-            target="_blank" 
+            href={githubUrl || "/"} 
+            target={githubUrl ? "_blank" : "_self"}
             className="flex-1 rounded-lg bg-black/20 px-4 py-2 text-center font-bold text-slate-200 transition-all hover:bg-black/40"
           >
             Code

@@ -1,19 +1,11 @@
 import Image from 'next/image'; // Imageコンポーネントをインポート
 import Link from 'next/link';   // Linkコンポーネントをインポート
 import WorkCard from '@/components/WorkCard';
+import { getWorks } from '@/lib/microcms';
 
-//作品データを配列で管理
-const works =[
-  {
-    title:"my first work",
-    description:"はじめて作ったアプリケーションです",
-    imageUrl:"/images/work01.png",
-    appUrl:"",
-    githubUrl:"",
-  }
-]
-
-export default function Home() {
+export default async function Home() {
+  // CMSからWorksデータを取得
+  const works = await getWorks();
   return (
     <>
        {/* ▼▼▼ ここがアニメーションするグラデーション背景 ▼▼▼ */}
@@ -51,12 +43,12 @@ export default function Home() {
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2">
           {works.map((work) => (
             <WorkCard
-              key={work.title} // mapでループする際はkeyを指定
+              key={work.id} // CMSのIDをkeyに使用
               title={work.title}
               description={work.description}
-              imageUrl={work.imageUrl}
-              appUrl={work.appUrl}
-              githubUrl={work.githubUrl}
+              imageUrl={work.image.url} // CMSの画像URLの構造に対応
+              appUrl={work.url || ""}
+              githubUrl={work.github || ""}
             />
           ))}
         </div>

@@ -8,8 +8,9 @@ export interface Work {
   image: {
     url: string;
   };
-  appUrl: string;
-  githubUrl: string;
+  technologies?: string;
+  url?: string;
+  github?: string;
   createdAt: string;
   updatedAt: string;
 }
