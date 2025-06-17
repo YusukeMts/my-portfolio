@@ -15,16 +15,27 @@ export interface Work {
   updatedAt: string;
 }
 
-// クライアント作成
-const client = createClient({
-  serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN!,
-  apiKey: process.env.MICROCMS_API_KEY!,
-});
-
 // Works一覧を取得
 export const getWorks = async (): Promise<Work[]> => {
-  const data = await client.get({
-    endpoint: 'works',
-  });
-  return data.contents;
+  // 環境変数の存在チェック
+  if (!process.env.MICROCMS_SERVICE_DOMAIN || !process.env.MICROCMS_API_KEY) {
+    console.warn('microCMS environment variables are not set. Returning empty array.');
+    return [];
+  }
+
+  try {
+    // クライアントを関数内で作成
+    const client = createClient({
+      serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
+      apiKey: process.env.MICROCMS_API_KEY,
+    });
+
+    const data = await client.get({
+      endpoint: 'works',
+    });
+    return data.contents;
+  } catch (error) {
+    console.error('Failed to fetch works from microCMS:', error);
+    return [];
+  }
 };
